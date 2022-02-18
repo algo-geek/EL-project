@@ -7,3 +7,21 @@
 body{
     font-family: 'Poppins', sans-serif;
 }
+
+#signup{
+    background: #FFFF00;
+    color:black;
+    border: 1px solid #FFFF00;
+    cursor: pointer;
+}
+
+#signup:hover{
+    background: black;
+    color:white;
+    border:1px solid black;
+
+}
+
+#navbtn:hover{
+    color:#FFFF00;
+}
