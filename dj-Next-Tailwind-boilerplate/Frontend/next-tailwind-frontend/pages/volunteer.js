@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 
 export default function donate() {
-    const [value, setValue] = useState(10);
-    const handleChange = (e, data) => { setValue(data) }
     return (
         <>
             <div className="justify-center mt-20 text-center">
