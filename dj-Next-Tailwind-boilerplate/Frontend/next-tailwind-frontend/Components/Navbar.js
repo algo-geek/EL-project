@@ -64,7 +64,7 @@ export default function Navbar() {
                                 Our Mission
                             </a>
                         </Link>
-                        <Link href="/">
+                        <Link href="/donate">
                             <a
                                 id="navbtn"
                                 className="lg:flex lg:w-auto w-full py-2 rounded text-white ease-in-out duration-300"
@@ -72,7 +72,7 @@ export default function Navbar() {
                                 Donate Food
                             </a>
                         </Link>
-                        <Link href="/">
+                        <Link href="/request">
                             <a
                                 id="navbtn"
                                 className="lg:flex lg:w-auto w-full py-2 rounded text-white ease-in-out duration-300"
@@ -80,7 +80,7 @@ export default function Navbar() {
                                 Get Food
                             </a>
                         </Link>
-                        <Link href="/">
+                        <Link href="/volunteer">
                             <a
                                 id="navbtn"
                                 className="lg:flex lg:w-auto w-full py-2 rounded text-white ease-in-out duration-300"
