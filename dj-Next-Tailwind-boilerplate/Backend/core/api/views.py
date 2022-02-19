@@ -42,14 +42,20 @@ def register(request):
 @api_view(['POST'])
 def addFoodProvideRequest(request):
     data = request.data
-    token_key = data['username']
-    user_obj = get_object_or_404(User, username = data['username'])
+    token_key = data['token']
+    # user_obj = get_object_or_404(User, username = data['username'])
+    token = get_object_or_404(Token, key = token_key)
+    print(token)
+    print(data)
+    user_obj = token.user
+    print(user_obj)
     data['user'] = user_obj.id
     serializer = FoodProvideRequestSerializer(data=data)
+    print(serializer)
     if serializer.is_valid(raise_exception=True):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response({"message": "Something went wrong"}, status=status.HTTP_400_BAD_REQUEST) 
+    # return Response({"message": "Something went wrong"}, status=status.HTTP_400_BAD_REQUEST) 
 
 
 

@@ -20,10 +20,7 @@ export default function register() {
   const router = useRouter();
 
   const handleFormSubmit = () => {
-    // e.preventDefault()
-
-    // let email = e.target.elements.email?.value
-    // let password = e.target.elements.password?.value
+    
 
     console.log(username, email, password);
     if (username == "") {
@@ -78,7 +75,7 @@ export default function register() {
           <h3 className="text-grey6 font-semibold cursor-pointer">Sign in</h3>
           </Link>
         </div>
-        <form 
+        <div
         // onSubmit={handleFormSubmit}
         >
           <div className="pb-2">
@@ -136,7 +133,7 @@ export default function register() {
           </div>
 
 
-        </form>
+        </div>
       </div>
     </div>
     </>

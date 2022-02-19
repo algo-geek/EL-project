@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 
 export default function login() {
   const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [alert, setAlert ] = useState("");
   const [typealert, setTypeAlert] = useState("");
   const [cookie, setCookie, removeCookie] = useCookies(["token"]);
@@ -21,7 +21,7 @@ export default function login() {
 
 
   const handleSubmit = () => {
-      if(email == ""){
+      if(username == ""){
           setTypeAlert("error")
           setAlert("Please enter your username");
       }
@@ -32,8 +32,8 @@ export default function login() {
       }
       else{
 
-         axios.post("http://127.0.0.1:8000/api-token-auth/", {
-          email: email,
+         axios.post("http://127.0.0.1:8000/api/api-token-auth/", {
+          username: username,
           password: password
           })
           
@@ -41,6 +41,7 @@ export default function login() {
             console.log(e.data.token)
             console.log("successfull");
             setCookie('token', e.data.token);
+            router.push("/");
 
           })
           .catch(e=>{
@@ -49,7 +50,7 @@ export default function login() {
           console.log("hello");
         }
       
-      console.log(password, email);
+      console.log(password, username);
       
 
   }
@@ -62,17 +63,17 @@ export default function login() {
       <div className="mx-auto mb-auto mt-32 w-full max-w-md rounded-lg border bg-white py-10 px-16">
         <h1 className="text-end mt-4 mb-12 text-3xl font-medium">Sign in</h1>
 
-        <form 
+        <div
         // onSubmit={handleFormSubmit}
         >
           <div className="pb-2">
             <div>
               <input
-                type="email"
-                value={email} onChange={e=>setEmail(e.target.value)}
+                type="text"
+                value={username} onChange={e=>setUsername(e.target.value)}
                 className={`mt-1 block w-full rounded-md border border-gray-400 bg-white px-3 py-2 shadow-sm focus:outline-none focus:ring-1 focus:ring-yellow1 sm:text-sm `}
-                id="email"
-                placeholder="Email Address"
+                id="username"
+                placeholder="Name"
               />
             </div>
             <div className="pt-2">
@@ -118,7 +119,7 @@ export default function login() {
               Forgot your password?
             </a>
           </div>
-        </form>
+        </div>
       </div>
     </div>
     </>
