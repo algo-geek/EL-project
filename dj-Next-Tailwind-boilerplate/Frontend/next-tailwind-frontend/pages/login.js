@@ -1,24 +1,75 @@
-import React from 'react'
+import { useState } from "react";
+import axios from "axios";
+import Alert from "../components/Alert";
+import { useCookies } from "react-cookie";
+import { useRouter } from "next/router";
 
 export default function login() {
-  const handleFormSubmit = (e) => {
-    e.preventDefault()
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [alert, setAlert ] = useState("");
+  const [typealert, setTypeAlert] = useState("");
+  const [cookie, setCookie, removeCookie] = useCookies(["token"]);
+  const [cookieUsername, setCookieUsername, removeCookieUsername] = useCookies(["username"]);
+  const [auth_token, setAuthToken] = useState("");
 
-    let email = e.target.elements.email?.value
-    let password = e.target.elements.password?.value
+  var cookieExpiry = new Date();
+  cookieExpiry.setDate(cookieExpiry.getDate()+60);
 
-    console.log(email, password)
+  const router = useRouter();
+
+
+
+  const handleSubmit = () => {
+      if(email == ""){
+          setTypeAlert("error")
+          setAlert("Please enter your username");
+      }
+      else if(password == ""){
+          setTypeAlert("error")
+          setAlert("Please enter your password");
+         
+      }
+      else{
+
+         axios.post("http://127.0.0.1:8000/api-token-auth/", {
+          email: email,
+          password: password
+          })
+          
+          .then(e=>{
+            console.log(e.data.token)
+            console.log("successfull");
+            setCookie('token', e.data.token);
+
+          })
+          .catch(e=>{
+            console.log("Something went wrong")
+          })
+          console.log("hello");
+        }
+      
+      console.log(password, email);
+      
+
   }
+
   return (
+    <>
+  {alert && <Alert typeAlert={typealert} message={alert} />}
+    
     <div className="flex h-screen">
       <div className="mx-auto mb-auto mt-32 w-full max-w-md rounded-lg border bg-white py-10 px-16">
         <h1 className="text-end mt-4 mb-12 text-3xl font-medium">Sign in</h1>
 
-        <form onSubmit={handleFormSubmit}>
+        <form 
+        // onSubmit={handleFormSubmit}
+        >
           <div className="pb-2">
             <div>
               <input
                 type="email"
+                value={email} onChange={e=>setEmail(e.target.value)}
                 className={`mt-1 block w-full rounded-md border border-gray-400 bg-white px-3 py-2 shadow-sm focus:outline-none focus:ring-1 focus:ring-yellow1 sm:text-sm `}
                 id="email"
                 placeholder="Email Address"
@@ -27,7 +78,7 @@ export default function login() {
             <div className="pt-2">
               <input
                 type="password"
-                autoComplete="email"
+                value={password} onChange={e=>setPassword(e.target.value)}
                 className={`mt-1 block w-full rounded-md border border-gray-400 bg-white px-3 py-2 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-1 focus:ring-yellow1 sm:text-sm `}
                 id="password"
                 placeholder="Password"
@@ -53,6 +104,7 @@ export default function login() {
             <button
               type="submit"
               className="group relative flex w-full justify-center rounded-md border border-transparent bg-black py-2 px-4 text-sm font-medium text-white hover:bg-gray-800"
+              onClick={handleSubmit}
             >
               Sign in
             </button>
@@ -69,5 +121,6 @@ export default function login() {
         </form>
       </div>
     </div>
+    </>
   )
 }
