@@ -14,7 +14,9 @@ module.exports = {
         'grey4': 'rgba(0, 0, 0, 0.24)',
         'grey5': 'rgba(47, 72, 88, 0.1)',
         'grey6': 'rgba(0, 0, 0, 0.5)',
-        'blue1': '#2F4858'
+        'grey7': 'rgba(0, 0, 0, 0.14)',
+        'blue1': '#2F4858',
+        'blue2': '#00C3C0'
 
       },
     },

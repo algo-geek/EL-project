@@ -51,9 +51,10 @@ export default function Home() {
             {/* text */}
             <div className="pt-20 pb-0 px-3 xl:px-0 md:pl-4 text-center md:pb-12 md:w-1/2 md:text-left text-black"
             >
-              <h1 id="header-text" className="relative z-10 text-4xl font-bold md:text-5xl font-display">
-                Our Mission
+              <h1 id="header-text" className="relative z-10 text-4xl font-bold md:text-5xl font-display tracking-widest">
+                OUR MISSION
               </h1>
+              <Image src={Line} />
               <p className="pt-8 text-lg leading-relaxed md:max-w-md md:text-xl">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro eaque aliquid eveniet optio eligendi. Officia mollitia
               </p>
@@ -96,7 +97,7 @@ export default function Home() {
               <div className="donate">
 
                 {/* donate heading */}
-                <div>
+                <div className=" text-center md:text-left">
                   <h1 className="font-medium text-4xl lg:text-5xl">HOW TO DONATE ?</h1>
                   <Image src={Line} />
                 </div>
@@ -144,7 +145,7 @@ export default function Home() {
               <div className="my-20">
 
                 {/* request heading */}
-                <div>
+                <div className=" text-center md:text-left">
                   <h1 className="font-medium text-4xl lg:text-5xl">HOW TO REQUEST ?</h1>
                   <Image src={Line} />
                 </div>

@@ -1,1 +1,0 @@
-## DJANGO + NEXT + TAILWIND
