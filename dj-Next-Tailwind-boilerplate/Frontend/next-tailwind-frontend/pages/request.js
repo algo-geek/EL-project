@@ -26,7 +26,7 @@ export default function request() {
             setImage("NA");
         }
         else{
-            axios.post("http://127.0.0.1:8000/api/add-food-provide-request/",{
+            axios.post("http://127.0.0.1:8000/api/get-food-provide-request/",{
             title: title,
             description: description,
             meal_time: "BF",
@@ -34,8 +34,8 @@ export default function request() {
             city: city,
             pincode: pincode,
             phone_number: phone,
-            lattitude: 90.0,
-            longitude: 90.0,
+            lat: 90.0,
+            lon: 90.0,
             token:cookie['token']
 
         }).then((res) => {

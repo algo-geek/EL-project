@@ -26,6 +26,11 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class FoodProvideRequestSerializer(serializers.ModelSerializer):
+    user_details = serializers.SerializerMethodField("get_user_details")
+    def get_user_details(self, obj):
+        user = User.objects.get(id=obj.user.id)
+        return user.username
+
     class Meta:
         model = FoodProvideRequest
         fields ='__all__'

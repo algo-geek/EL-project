@@ -37,6 +37,13 @@ class FoodRequest(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     time = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
+    address = models.TextField(null = True, blank= True)
+    city = models.CharField(max_length=100, null= True, blank= True)
+    pincode = models.CharField(max_length=6, null= True, blank= True)
+    phone_number = models.CharField(max_length=10, null= True, blank= True)
+    org = models.CharField(max_length=100, null= True, blank= True)
+    description = models.TextField( null= True, blank= True)
+    servings = models.IntegerField(default=0)
 
     def __str__(self):
         return self.food_provide_request.title + " by : " + self.user.username

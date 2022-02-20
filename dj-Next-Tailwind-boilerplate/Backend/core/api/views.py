@@ -95,7 +95,15 @@ def getFoodProvideRequest(request):
 @api_view(['POST'])
 def requestFood(request):
     data = request.data
-    user_obj = get_object_or_404(User, username = data['username'])
+    # user_obj = get_object_or_404(User, username = data['username'])
+    # data['user'] = user_obj.id
+    token_key = data['token']
+    # user_obj = get_object_or_404(User, username = data['username'])
+    token = get_object_or_404(Token, key = token_key)
+    print(token)
+    print(data)
+    user_obj = token.user
+    print(user_obj)
     data['user'] = user_obj.id
     serializer = FoodRequestSerializer(data=data)
     if serializer.is_valid(raise_exception=True):
