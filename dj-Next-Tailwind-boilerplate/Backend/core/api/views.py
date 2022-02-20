@@ -75,6 +75,7 @@ def distance(lat1, lat2, lon1, lon2):
 @api_view(['POST'])
 def getFoodProvideRequest(request):
     data = request.data
+    print(data)
     lat = data['lat']
     lon = data['lon']
     result =[]

@@ -1,9 +1,52 @@
 import React, { useState } from 'react'
+import axios from 'axios'
+import { useCookies } from "react-cookie";
 
 
-export default function donate() {
+export default function request() {
     const [value, setValue] = useState(10);
     const handleChange = (e, data) => { setValue(data) }
+
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [image, setImage] = useState("");
+    const [address, setAddress] = useState("");
+    const [city, setCity] = useState("");
+    const [pincode, setPincode] = useState("");
+    const [phone, setPhone] = useState("");
+    const [alert, setAlert ] = useState("");
+    const [typealert, setTypeAlert] = useState("");
+    const [cookie, setCookie, removeCookie] = useCookies(["token"]);
+
+    const handleSubmit = () => {
+        if(description == ""){
+            setDescription("NA");
+        }
+        else if(image == ""){
+            setImage("NA");
+        }
+        else{
+            axios.post("http://127.0.0.1:8000/api/add-food-provide-request/",{
+            title: title,
+            description: description,
+            meal_time: "BF",
+            address: address,
+            city: city,
+            pincode: pincode,
+            phone_number: phone,
+            lattitude: 90.0,
+            longitude: 90.0,
+            token:cookie['token']
+
+        }).then((res) => {
+            console.log(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+
+    }
+        }
+
     return (
         <>
             <div className="justify-center mt-20 text-center">
@@ -22,6 +65,7 @@ export default function donate() {
                     <div className="text-base"><span className="text-black font-medium">Organisation Name*</span></div>
                     <input
                         type="text"
+                        value={title} onChange={e=>setTitle(e.target.value)}
                         className="mt-3 block w-full rounded-md border border-grey3 bg-white px-3 py-3.5 shadow-sm focus:outline-none focus:ring-1 focus:ring-yellow1 sm:text-sm placeholder-grey4"
                         placeholder="40 plates of excess food available"
                     />
@@ -29,7 +73,9 @@ export default function donate() {
                 {/* image */}
                 <div className="pb-7">
                     <div className="text-base"><span className="text-black font-medium">Add image of the organisation</span></div>
-                    <div className="mt-3 block text-center w-full rounded-md border-2 border-dashed border-grey3 bg-grey5 px-3 py-7 text-base"><span className="text-grey6 font-medium">Drag & Drop or <span className="underline underline-offset-4 font-medium text-blue1">Browse</span></span>
+                    <div className="mt-3 block text-center w-full rounded-md border-2 border-dashed border-grey3 bg-grey5 px-3 py-7 text-base"><span className="text-grey6 font-medium"
+                     value={image} onChange={e=>setImage(e.target.value)}
+                     >Drag & Drop or <span className="underline underline-offset-4 font-medium text-blue1">Browse</span></span>
                         
                     </div>
                 </div>
@@ -52,6 +98,7 @@ export default function donate() {
                     <div className="text-base"><span className="text-black font-medium">Address of the organisation*</span></div>
                     <input
                         type="text"
+                        value={address} onChange={e=>setAddress(e.target.value)}
                         className="mt-3 block w-full rounded-md border border-grey3 bg-white px-3 py-3.5 shadow-sm focus:outline-none focus:ring-1 focus:ring-yellow1 sm:text-sm placeholder-grey4"
                         placeholder="XYZ Colony"
                     />
@@ -61,6 +108,7 @@ export default function donate() {
                     <div className="text-base"><span className="text-black font-medium">City*</span></div>
                     <input
                         type="text"
+                        value={city} onChange={e=>setCity(e.target.value)}
                         className="mt-3 block w-full rounded-md border border-grey3 bg-white px-3 py-3.5 shadow-sm focus:outline-none focus:ring-1 focus:ring-yellow1 sm:text-sm placeholder-grey4"
                         placeholder="Mumbai"
                     />
@@ -70,6 +118,7 @@ export default function donate() {
                     <div className="text-base"><span className="text-black font-medium">Pincode*</span></div>
                     <input
                         type="text"
+                        value={pincode} onChange={e=>setPincode(e.target.value)}
                         className="mt-3 block w-full rounded-md border border-grey3 bg-white px-3 py-3.5 shadow-sm focus:outline-none focus:ring-1 focus:ring-yellow1 sm:text-sm placeholder-grey4"
                         placeholder="123654"
                     />
@@ -79,6 +128,7 @@ export default function donate() {
                     <div className="text-base"><span className="text-black font-medium">Phone Number*</span></div>
                     <input
                         type="text"
+                        value={phone} onChange={e=>setPhone(e.target.value)}
                         className="mt-3 block w-full rounded-md border border-grey3 bg-white px-3 py-3.5 shadow-sm focus:outline-none focus:ring-1 focus:ring-yellow1 sm:text-sm placeholder-grey4"
                         placeholder="+918888889999"
                     />
@@ -88,6 +138,7 @@ export default function donate() {
                     <div className="text-base"><span className="text-black font-medium">Anything you want to know?</span></div>
                     <input
                         type="text"
+                        value={description} onChange={e=>setDescription(e.target.value)}
                         className="mt-3 block w-full rounded-md border border-grey3 bg-white px-3 pb-20 pt-3.5 shadow-sm focus:outline-none focus:ring-1 focus:ring-yellow1 sm:text-sm placeholder-grey4"
                         placeholder="Write detailed description"
                     />
@@ -96,6 +147,7 @@ export default function donate() {
                 <div className="mt-10 flex items-center justify-center">
             <button
               type="submit"
+              onClick={handleSubmit}
               className="flex w-11/12 sm:w-1/2 justify-center rounded-lg border bg-blue1 py-3 text-sm font-medium text-white hover:bg-gray-800"
             >
               Submit

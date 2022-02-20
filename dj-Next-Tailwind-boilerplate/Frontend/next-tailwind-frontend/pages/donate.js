@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useCookies } from "react-cookie";
+
 export default function donate() {
     const [value, setValue] = useState(10);
     const handleChange = (e, data) => { setValue(data) }
@@ -20,7 +21,11 @@ export default function donate() {
     const [cookie, setCookie, removeCookie] = useCookies(["token"]);
 
     const handleSubmit = () => {
-        axios.post("http://127.0.0.1:8000/api/add-food-provide-request/",{
+        if(description == ""){
+            setDescription("NA");
+        }
+        else{
+            axios.post("http://127.0.0.1:8000/api/add-food-provide-request/",{
             title: title,
             description: description,
             meal_time: "BF",
@@ -39,6 +44,8 @@ export default function donate() {
         })
 
     }
+        }
+        
 
     return (
         <>

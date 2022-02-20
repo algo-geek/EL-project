@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export default function donate() {
+export default function volunteer() {
     return (
         <>
             <div className="justify-center mt-20 text-center">
