@@ -25,3 +25,9 @@ body{
 #navbtn:hover{
     color:#FFFF00;
 }
+#marker{
+    color: black;
+    font-size: 20px;
+
+}   
+

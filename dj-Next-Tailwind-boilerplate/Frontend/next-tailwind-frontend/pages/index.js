@@ -8,6 +8,7 @@ import Line from "../public/images/line.png";
 import One from "../public/images/one.png";
 import Two from "../public/images/two.png";
 import Three from "../public/images/three.png";
+import Circle from "../public/images/circle.svg";
 
 export default function Home() {
   return (
@@ -85,9 +86,9 @@ export default function Home() {
           <div className="flex flex-col-reverse md:flex-row lg:items-end items-center">
 
             {/* text */}
-            <div className="pb-0 px-3 xl:px-0 md:pl-4 text-center md:pb-12 md:w-1/2 md:text-left text-black"
-            >
-           
+            <div className="pb-0 px-3 xl:px-0 md:pl-0 text-center md:pb-12 md:w-1/2 md:text-left text-black">
+  
+           <Image src={Circle} />
 
             </div>
 
@@ -120,7 +121,7 @@ export default function Home() {
                     <Image src={Two} width="70" height="70" />
                   </div>
                   <div className="ml-6">
-                    <span className="text-3xl font-medium">Add food items </span>
+                    <span className="text-3xl font-medium">Get notified and choose who to share with</span>
                     <p className="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque molestias harum sunt a enim, perspiciatis fugit.</p>
                   </div>
 
@@ -132,7 +133,7 @@ export default function Home() {
                     <Image src={Three} width="70" height="70" />
                   </div>
                   <div className="ml-6">
-                    <span className="text-3xl font-medium">Add food items </span>
+                    <span className="text-3xl font-medium">Share food</span>
                     <p className="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque molestias harum sunt a enim, perspiciatis fugit.</p>
                   </div>
 
@@ -141,12 +142,32 @@ export default function Home() {
 
               </div>
 
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full min-h-screen text-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col-reverse md:flex-row lg:items-end items-center">
+
+            {/* text */}
+            <div className="pb-0 px-3 xl:px-0 md:pl-4 text-center md:pb-12 md:w-1/2 md:text-left text-black"
+            >
+           <Image src={Circle} />
+
+            </div>
+
+            {/* illustration */}
+            <div className="text-black items-end md:w-1/2 mt-28">
+
               {/* request */}
               <div className="my-20">
 
                 {/* request heading */}
                 <div className=" text-center md:text-left">
-                  <h1 className="font-medium text-4xl lg:text-5xl">HOW TO REQUEST ?</h1>
+                  <h1 className="font-medium text-4xl lg:text-5xl">HOW TO GET FOOD ?</h1>
                   <Image src={Line} />
                 </div>
 
@@ -156,7 +177,7 @@ export default function Home() {
                     <Image src={One} width="70" height="70" />
                   </div>
                   <div className="ml-6">
-                    <span className="text-3xl font-medium">Add food items </span>
+                    <span className="text-3xl font-medium">Browse Listings</span>
                     <p className="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque molestias harum sunt a enim, perspiciatis fugit.</p>
                   </div>
 
@@ -168,7 +189,7 @@ export default function Home() {
                     <Image src={Two} width="70" height="70" />
                   </div>
                   <div className="ml-6">
-                    <span className="text-3xl font-medium">Add food items </span>
+                    <span className="text-3xl font-medium">Request from listings</span>
                     <p className="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque molestias harum sunt a enim, perspiciatis fugit.</p>
                   </div>
 
@@ -180,7 +201,7 @@ export default function Home() {
                   <Image src={Three} width="70" height="70" />
                   </div>
                   <div className="ml-6">
-                    <span className="text-3xl font-medium">Add food items </span>
+                    <span className="text-3xl font-medium">Get food</span>
                     <p className="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque molestias harum sunt a enim, perspiciatis fugit.</p>
                   </div>
 
@@ -188,11 +209,68 @@ export default function Home() {
 
 
               </div>
+
             </div>
 
           </div>
         </div>
       </div>
+
+      <div className="w-full min-h-screen text-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col-reverse md:flex-row lg:items-end items-center">
+
+            {/* text */}
+            <div className="pb-0 px-3 xl:px-0 md:pl-4 text-center md:pb-12 md:w-1/2 md:text-left text-black"
+            >
+           <Image src={Circle} />
+
+            </div>
+
+            {/* illustration */}
+            <div className="text-black items-end md:w-1/2 mt-28">
+              {/* donate */}
+              <div className="donate">
+
+                {/* donate heading */}
+                <div className=" text-center md:text-left">
+                  <h1 className="font-medium text-4xl lg:text-5xl">VOLUNTEER</h1>
+                  <Image src={Line} />
+                </div>
+
+                {/* one */}
+                <div className="flex mt-8">
+                  <div>
+                    <Image src={One} width="70" height="70" />
+                  </div>
+                  <div className="ml-6">
+                    <span className="text-3xl font-medium">Add hunger zones</span>
+                    <p className="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque molestias harum sunt a enim, perspiciatis fugit.</p>
+                  </div>
+
+                </div>
+
+                {/* two */}
+                <div className="flex mt-14">
+                  <div>
+                    <Image src={Two} width="70" height="70" />
+                  </div>
+                  <div className="ml-6">
+                    <span className="text-3xl font-medium">Happy Sharing</span>
+                    <p className="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque molestias harum sunt a enim, perspiciatis fugit.</p>
+                  </div>
+
+                </div>
+
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
     </>
   )
 }

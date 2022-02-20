@@ -84,8 +84,8 @@ def getFoodProvideRequest(request):
     for obj in objs:
         dist = distance(lat, obj.lattitude, lon, obj.longitude)
         print(dist)
-        if dist <= abs(10):
-            result.append(obj)
+        # if dist <= abs(10000):
+        result.append(obj)
     serializer = FoodProvideRequestSerializer(result, many=True)
 
     return Response(serializer.data , status = status.HTTP_200_OK)
